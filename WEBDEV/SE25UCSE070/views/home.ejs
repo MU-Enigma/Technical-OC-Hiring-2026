@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload System</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+    <h2>File Upload System</h2>
+
+    <div class="upload">
+        <p>Upload your files here</p>
+        <a href="/upload"><button>Upload Files</button></a>
+    </div>
+
+    <p class="uploaded-files">Uploaded files</p>
+    <div class="existing">
+        <% for(let format of fileFormats) { %> 
+            <div class="indvfiles">
+                <p>name: <%= format.originalFileName %></p>
+                <p>time uploaded: <%= format.uploadDate.toString().split(" ").splice(0,5).join("-") %></p>
+
+                <a href="/files/<%= format._id %>/view">
+                    <button type="button">View File</button>
+                </a>
+
+                <a href="/files/<%= format._id %>/download">
+                    <button type="button">Download File</button>
+                </a>
+
+                <form method="POST" action="/files/<%= format._id %>?_method=DELETE">
+                    <button type="submit">Delete File</button>
+                </form>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
