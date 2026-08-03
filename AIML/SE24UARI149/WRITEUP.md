@@ -193,7 +193,7 @@ score on a matched test set.
 | Bicubic baseline (0 parameters) | 22.998 | 0.578 | Also what the network reduces to if its residual branch learns nothing |
 | Stage 1: pure L1 (40 epochs) | 23.808 | 0.625 | Test split, realistic degradation; converged cleanly |
 | Stage 2: multi-component loss (40 epochs) | ~23.40 | ~0.609 | Validation split; plateaued lower, no visible gain |
-| Stage 3: GAN fine-tuned, rebalanced (20 epochs) | ~21.4-22.7 | ~0.49-0.57 | Validation split; expected trade-off for perceptual gain |
+| Stage 3: GAN fine-tuned, rebalanced (20 epochs) | ~24.4-25.7 | ~0.49-0.57 | Validation split; expected trade-off for perceptual gain |
 
 Stage 1 beats bicubic by a real but modest margin (+0.81 dB PSNR, +0.047
 SSIM). Stage 3 scoring lower than Stage 1 on both metrics, while looking
