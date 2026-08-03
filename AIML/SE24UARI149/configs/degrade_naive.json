@@ -1,0 +1,26 @@
+{
+  "name": "naive",
+  "description": "Deterministic bicubic-only downsampling. Deliberate strawman baseline used to demonstrate the domain-gap problem: a model trained only on this will overfit to inverting a single clean, noise-free linear operator and should generalize poorly to real-world low-res images.",
+  "scale_factor": 4,
+
+  "blur": {
+    "enabled": false
+  },
+
+  "downsample": {
+    "method": "bicubic",
+    "randomize_method": false
+  },
+
+  "noise": {
+    "enabled": false
+  },
+
+  "jpeg": {
+    "enabled": false
+  },
+
+  "second_pass": {
+    "enabled": false
+  }
+}

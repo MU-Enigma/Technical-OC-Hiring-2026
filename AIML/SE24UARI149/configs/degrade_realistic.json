@@ -1,0 +1,46 @@
+{
+  "name": "realistic",
+  "description": "Randomized, compounded degradation pipeline intended to approximate the range of ways a real-world photo becomes low quality: optical/sensor blur, resizing, sensor/compression noise, JPEG re-encoding, and occasional repeated resave. Strength of each stage is randomized per-sample so the model sees a distribution of degradations rather than a single fixed operator, which is what should let it generalize beyond synthetic pairs.",
+  "scale_factor": 4,
+
+  "blur": {
+    "enabled": true,
+    "probability": 0.8,
+    "type": "gaussian_or_isotropic",
+    "sigma_range": [0.2, 2.0],
+    "kernel_size_range": [3, 9]
+  },
+
+  "downsample": {
+    "method": "bicubic",
+    "randomize_method": true,
+    "alternate_methods": ["bilinear", "nearest"],
+    "alternate_probability": 0.15
+  },
+
+  "noise": {
+    "enabled": true,
+    "probability": 0.7,
+    "type": "gaussian",
+    "sigma_range_0_255": [1.0, 12.0]
+  },
+
+  "jpeg": {
+    "enabled": true,
+    "probability": 0.9,
+    "quality_range": [30, 90]
+  },
+
+  "second_pass": {
+    "enabled": true,
+    "probability": 0.25,
+    "description": "Simulates an image being resized/re-shared/re-compressed more than once.",
+    "resize_jitter_range": [0.8, 1.0],
+    "jpeg_quality_range": [40, 95]
+  },
+
+  "order_randomization": {
+    "enabled": true,
+    "description": "Randomly swap order of noise and jpeg stages per-sample so the model doesn't learn a single fixed artifact ordering."
+  }
+}

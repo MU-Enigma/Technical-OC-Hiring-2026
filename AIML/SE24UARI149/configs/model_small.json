@@ -1,0 +1,7 @@
+{
+  "name": "small",
+  "description": "Main reported model configuration, sized to be comfortably trainable on a Colab T4 GPU within tens of minutes. 8 residual blocks, 64 channels.",
+  "num_blocks": 8,
+  "num_channels": 64,
+  "scale_factor": 4
+}
