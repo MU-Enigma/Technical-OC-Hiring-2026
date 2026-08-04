@@ -1,0 +1,13 @@
+[Unit]
+Description=AssetVault Report Service
+After=network.target
+
+[Service]
+Type=simple
+User=svc_vault
+WorkingDirectory=/opt/assetvault
+ExecStart=/opt/assetvault/venv/bin/python3 /opt/assetvault/app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
