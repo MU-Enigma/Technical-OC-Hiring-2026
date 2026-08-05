@@ -163,4 +163,4 @@ the held-out synthetic test split) and `outputs/eval/real_photo_comparison.png`
 ## Demo & Technical Walkthrough
 
 - **Junior-level workshop presentation:** https://youtu.be/KBnrTUmo654
-- **Technical walkthrough (approach, implementation, key design decisions, live inference demo):** [link]
+- **Technical walkthrough (approach, implementation, key design decisions, live inference demo):** https://youtu.be/zz1xbqdLvjo
