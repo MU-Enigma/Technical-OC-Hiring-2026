@@ -21,10 +21,10 @@ architecture choices, loss function, and evaluation approach — is in
 
 | Model                             | PSNR   | SSIM   |
 |-----------------------------------|--------|--------|
-| Bicubic (non-learned floor)       | 24.779 | 0.6458 |
-| SRCNN (baseline)                  | 24.943 | 0.6526 |
-| SRResNet (bicubic-only)           | 24.970 | 0.6464 |
-| SRResNet (full degradation)       | 25.617 | 0.6750 |
+| Bicubic (non-learned floor)       | 24.780 | 0.6456 |
+| SRCNN (baseline)                  | 24.945 | 0.6528 |
+| SRResNet (bicubic-only)           | 24.966 | 0.6467 |
+| SRResNet (full degradation)       | 25.614 | 0.6750 |
 
 ![Training progression at epoch 100](assets/snapshots/epoch_200.png)
 
@@ -90,13 +90,11 @@ self-supervised-sr/
 │   └── .gitkeep
 │
 ├── assets/
-│   ├── snapshots/
-│   │   └── .gitkeep
-│   ├── comparison_table.md
-│   └── real_photo_comparison.png
-│
-└── notebooks/
-    └── colab_train_and_eval.ipynb
+    ├── snapshots/
+    │   └── .gitkeep
+    ├── comparison_table.md
+    └── real_photo_comparison.png
+
 ```
 
 ## Setup
