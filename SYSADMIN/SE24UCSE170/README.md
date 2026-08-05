@@ -35,7 +35,7 @@ Please refer to the sub-directories for detailed documentation and reproduction 
 * `server/` - Contains the server code, Docker configuration, and environment setup instructions.
 * `attacker/` - Contains details on the CVE-2021-42013 vulnerability and instructions to execute the reverse shell exploit.
 * `server_patch/` - Contains log analysis for detection, the mitigation strategy, proof of the successful patch and patched config files.
-* `docs/`
+* `docs/` - Contains a video walkthrough and architecture notes.
 
 ---
 **Disclaimer:** The Python CGI scripts used in this project were generated with the assistance of the Gemini Flash AI model as a helpful development resource.
