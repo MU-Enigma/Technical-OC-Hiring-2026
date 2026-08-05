@@ -1,13 +1,13 @@
 {
-    "model": "bicubic",
-    "run_name": "bicubic",
-    "data_dir": "data/images",
-    "scale": 4,
-    "hr_crop": 128,
-    "degradation_strength": "medium",
-    "val_frac": 0.1,
-    "test_frac": 0.1,
-    "split_seed": 42,
-    "batch_size": 16,
-    "output_dir": "outputs"
-  }
+  "model": "bicubic",
+  "run_name": "bicubic",
+  "data_dir": "data/images",
+  "scale": 4,
+  "hr_crop": 128,
+  "degradation_strength": "medium",
+  "val_frac": 0.1,
+  "test_frac": 0.1,
+  "split_seed": 42,
+  "batch_size": 16,
+  "output_dir": "outputs"
+}
