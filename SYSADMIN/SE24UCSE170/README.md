@@ -37,5 +37,8 @@ Please refer to the sub-directories for detailed documentation and reproduction 
 * `server_patch/` - Contains log analysis for detection, the mitigation strategy, proof of the successful patch and patched config files.
 * `docs/` - Contains a video walkthrough and architecture notes.
 
+**Note:**
+- The walkthrough video has been compressed using 7zip LZMA2 compression algorithm to fit under the github upload limit.
+
 ---
 **Disclaimer:** The Python CGI scripts used in this project were generated with the assistance of the Gemini Flash AI model as a helpful development resource.
