@@ -3,7 +3,6 @@ services:
     image: postgres:15-alpine
     container_name: worm_library_db
     restart: always
-    command: /bin/sh -c "chown -R daemon:daemon /var/log/app && httpd-foreground"
     env_file:
       - .env
     environment:
@@ -28,6 +27,7 @@ services:
       dockerfile: Dockerfile
     container_name: worm_library_web
     restart: always
+    command: /bin/sh -c "chown -R daemon:daemon /var/log/app && httpd-foreground"
     env_file:
       - .env
     environment:
