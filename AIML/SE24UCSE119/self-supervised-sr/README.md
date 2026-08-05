@@ -6,10 +6,10 @@ inputs are synthesized on the fly from high-resolution source images using a
 randomized degradation pipeline (blur → downsample → noise → JPEG compression).
 
 Three models are trained and compared: a non-learned bicubic floor, an SRCNN
-baseline (Dong et al.), and a final SRResNet-lite model (Ledig et al. backbone +
+baseline (Dong et al.), and a final SRResNet model (Ledig et al. backbone +
 ESPCN PixelShuffle upsampling + EDSR's no-batch-norm finding + VDSR's
 residual/delta prediction). A controlled ablation additionally compares training
-SRResNet-lite on bicubic-only degradation vs. the full randomized pipeline, to
+SRResNet on bicubic-only degradation vs. the full randomized pipeline, to
 test whether realistic degradation actually improves generalization to real
 low-quality photos.
 
@@ -19,12 +19,12 @@ architecture choices, loss function, and evaluation approach — is in
 
 ## Results
 
-| Model                             | PSNR  | SSIM   |
-|-----------------------------------|-------|--------|
-| Bicubic (non-learned floor)       | 24.36 | 0.6366 |
-| SRCNN (baseline)                  | 24.51 | 0.6452 |
-| SRResNet-lite (bicubic-only)      | 24.63 | 0.6431 |
-| SRResNet-lite (full degradation)  | 25.05 | 0.6634 |
+| Model                             | PSNR   | SSIM   |
+|-----------------------------------|--------|--------|
+| Bicubic (non-learned floor)       | 24.779 | 0.6458 |
+| SRCNN (baseline)                  | 24.943 | 0.6526 |
+| SRResNet (bicubic-only)           | 24.970 | 0.6464 |
+| SRResNet (full degradation)       | 25.617 | 0.6750 |
 
 ![Training progression at epoch 200](assets/snapshots/epoch_200.png)
 
@@ -49,6 +49,8 @@ architecture choices, loss function, and evaluation approach — is in
 ![Side-by-side comparison](assets/demo_sidebyside.png)
 
 ## Project structure
+
+```
 self-supervised-sr/
 ├── .gitignore
 ├── README.md
@@ -60,6 +62,7 @@ self-supervised-sr/
 │   ├── __init__.py
 │   ├── data.py
 │   ├── models.py
+│   ├── perceptual.py
 │   ├── train.py
 │   ├── evaluate.py
 │   └── utils.py
@@ -94,6 +97,8 @@ self-supervised-sr/
 │
 └── notebooks/
     └── colab_train_and_eval.ipynb
+```
+
 ## Setup
 
 ```bash
@@ -109,8 +114,8 @@ pip install -r requirements.txt
 python scripts/download_data.py
 ```
 This downloads Oxford-IIIT Pet, keeps only images at or above a minimum native
-resolution (never upsamples a source image), and saves the filtered pool to
-`data/images/`.
+resolution (never upsamples a source image), caps the pool at 3,000 images, and
+saves the filtered pool to `data/images/`.
 
 **2. (Optional) Add real low-quality photos for qualitative evaluation**
 Drop 5–10 genuinely low-quality images (old photos, screenshots, compressed
@@ -148,14 +153,16 @@ the held-out synthetic test split) and `outputs/eval/real_photo_comparison.png`
 - **Data split at the file level**, before any patch cropping, using a
   deterministic filename hash — guarantees no patch-level leakage between
   train/val/test.
-- **Architecture**: SRResNet-lite combines SRResNet's residual-block backbone,
-  ESPCN's PixelShuffle upsampling (staged in sequential 2x steps), EDSR's
-  no-batch-norm finding, and VDSR's residual/delta prediction — each idea
-  attributed to one specific paper.
-- **Loss**: L1, chosen over MSE because MSE's quadratic penalty biases toward
-  blurry "safe average" predictions on this ill-posed problem.
-- **Not implemented (by design)**: adversarial/perceptual loss (SRGAN-style) —
-  see WRITEUP.md Section 2.3 for the reasoning.
+- **Architecture**: SRResNet combines a residual-block backbone, PixelShuffle
+  upsampling (staged in sequential 2x steps), EDSR's no-batch-norm finding, and
+  VDSR's residual/delta prediction — each idea attributed to one specific paper.
+- **Loss**: L1 as the primary pixel loss (avoids the blurry "safe average"
+  predictions MSE produces on this ill-posed problem), with a small VGG16
+  perceptual loss term added on top (weight 0.01) to further counteract
+  residual blurriness. See `WRITEUP.md` Section 2.2–2.3 for the full reasoning,
+  including the full adversarial/GAN alternative that was considered and not used.
 
 ## Demo & Technical Walkthrough
-[Watch the video](https://youtu.be/4WAF-5uhfGE)
+
+- **Junior-level workshop presentation:** [link]
+- **Technical walkthrough (approach, implementation, key design decisions, live inference demo):** [link]
