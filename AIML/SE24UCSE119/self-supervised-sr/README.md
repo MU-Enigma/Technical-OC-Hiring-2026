@@ -26,7 +26,7 @@ architecture choices, loss function, and evaluation approach — is in
 | SRResNet (bicubic-only)           | 24.970 | 0.6464 |
 | SRResNet (full degradation)       | 25.617 | 0.6750 |
 
-![Training progression at epoch 200](assets/snapshots/epoch_200.png)
+![Training progression at epoch 100](assets/snapshots/epoch_200.png)
 
 ![Real-photo qualitative comparison](assets/real_photo_comparison.png)
 
@@ -164,5 +164,5 @@ the held-out synthetic test split) and `outputs/eval/real_photo_comparison.png`
 
 ## Demo & Technical Walkthrough
 
-- **Junior-level workshop presentation:** [link]
+- **Junior-level workshop presentation:** https://youtu.be/KBnrTUmo654
 - **Technical walkthrough (approach, implementation, key design decisions, live inference demo):** [link]
