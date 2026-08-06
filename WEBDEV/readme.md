@@ -115,6 +115,9 @@ Submit the following:
     -   Assumptions Made
     -   Future Improvements
 -   Architecture / System Design Diagram
+-   A junior-level workshop-style presentation on the project
+-   A technical video walkthrough explaining your approach, implementation, and key design decisions
+-   A README.md technical document included in your GitHub submission
 
 ------------------------------------------------------------------------
 

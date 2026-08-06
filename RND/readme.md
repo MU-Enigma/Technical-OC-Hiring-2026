@@ -72,6 +72,9 @@ Your submission should include:
 * An explanation of the project's components, workflows, and technical decisions
 * A proposed implementation roadmap outlining how the PoC could evolve into a semester-long project
 * A **5–10 minute technical presentation or demo video** explaining the project, its architecture, your research process, and how you would lead its development
+* A junior-level workshop-style presentation on the project
+* A technical video walkthrough explaining your approach, implementation, and key design decisions
+* A README.md technical document included in your GitHub submission
 
 > **Note:** A working implementation or source code is **not required**. The emphasis is on research, planning, system design, and technical reasoning.
 

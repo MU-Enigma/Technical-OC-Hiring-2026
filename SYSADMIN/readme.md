@@ -28,6 +28,9 @@ Present your work with the following:
 - A patch or mitigation strategy
 - Proof that the mitigation works after the patch
 - Any diagrams or architecture notes that explain the system
+- A junior-level workshop-style presentation on the project
+- A technical video walkthrough explaining your approach, implementation, and key design decisions
+- A README.md technical document included in your GitHub submission
 
 ---
 

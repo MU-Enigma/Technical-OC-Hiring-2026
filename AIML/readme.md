@@ -45,6 +45,9 @@ Your submission should include:
 - Model configuration files in a structured format such as JSON
 - Separate scripts or entry points for each trained model configuration
 - A short demo video explaining the implementation, reasoning, and results if possible
+- A junior-level workshop-style presentation on the project
+- A technical video walkthrough explaining your approach, implementation, and key design decisions
+- A README.md technical document included in your GitHub submission
 
 ---
 
