@@ -59,21 +59,85 @@ LR image -> neural network -> HR image
 
 ## Bicubic interpolation
 
-Estimates missing pixels using surrounding pixel information without learning from data
+Estimates missing pixels using surrounding pixel information without learning from data.
+
+Used as a baseline for comparing neural network based super-resolution methods.
 
 ## SRCNN
 
-Super resolution convulational neural network is one of the classic deep learning models for image super-res
+Super resolution convolutional neural network is one of the classic deep learning models for image super-resolution.
 
-- Operates on high res space
-- Simple CNN architecture
+- Operates on high resolution space after bicubic upscaling
+- Uses convolution layers to learn high-frequency details
+- Uses residual learning by predicting additional details over the bicubic image
+
+Architecture:
+
+Input LR image (32x32x3)
+
+↓
+
+Bicubic upscaling
+
+↓
+
+Conv(9x9)
+ReLU
+
+↓
+
+Conv(5x5)
+ReLU
+
+↓
+
+Conv(3x3)
+ReLU
+
+↓
+
+Conv(5x5)
+
+↓
+
+Residual addition
+
+↓
+
+Output HR image (128x128x3)
+
+Trainable parameters: 138,947
+
 
 ## ESPCN
 
-Efficient subpixel conv neural network is an improved neural network that improves efficiency by performing feature extraction on low res space and applies upscaling at the end.
+Efficient sub-pixel convolutional neural network improves efficiency by performing feature extraction in low resolution space and applying upscaling at the end.
 
 - Lower computational cost
 - Efficient upscaling using PixelShuffle
+- Uses residual learning with bicubic interpolation as the base image
+
+Architecture:
+
+Input LR image (32x32x3)
+
+↓
+
+Feature extraction using convolution layers
+
+↓
+
+PixelShuffle x4
+
+↓
+
+Residual addition
+
+↓
+
+Output HR image (128x128x3)
+
+Trainable parameters: 180,208
 
 # Training 
 
@@ -119,11 +183,23 @@ Lower is better
 
 # Result analysis
 
-- Bicubic interpolation achieves strong SSIM and PSNR performance because eval metrics are pixel based
-- SRCNN provides good reconstruction quality using a simple CNN arch
-- ESPCN provides much better inference time because of higher computing efficiency
+Quantitative results:
 
-Although the neural networks do not outperform bicubic interpolation, they could outperform and scale better on more training and complex scenarios.
+| Model | Parameters | PSNR | SSIM | Inference Time |
+|---|---:|---:|---:|---:|
+| Bicubic | 0 | 23.9695 | 0.6266 | N/A |
+| SRCNN | 138,947 | 24.8741 | 0.6688 | 0.8351 ms |
+| ESPCN | 180,208 | 24.3840 | 0.6483 | 0.6551 ms |
+
+
+Observations:
+
+- Bicubic interpolation provides a strong baseline because PSNR and SSIM are pixel-based metrics.
+- SRCNN achieved the highest reconstruction quality with the best PSNR and SSIM scores.
+- ESPCN achieved faster inference compared to SRCNN because it performs feature extraction in low-resolution space and uses PixelShuffle for upscaling.
+- ESPCN provides a better efficiency-quality tradeoff while SRCNN focuses more on reconstruction quality.
+
+Neural networks can achieve further improvements with larger datasets, deeper architectures and more advanced degradation pipelines.
 
 # Installation
 

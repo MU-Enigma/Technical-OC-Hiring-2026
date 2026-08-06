@@ -2,7 +2,9 @@
 
 - Framework: PyTorch
 
-- GPU used: RTX 4070
+- GPU used: RTX 4070 (8 GB VRAM)
+
+- CPU used: i9 14900HX
 
 - CUDA: True
 
