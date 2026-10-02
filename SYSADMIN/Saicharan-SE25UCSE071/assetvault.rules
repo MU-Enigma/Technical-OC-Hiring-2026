@@ -1,0 +1,29 @@
+# /etc/audit/rules.d/assetvault.rules
+#
+# Watch rules supporting the AssetVault security lab. These cover the
+# activity that the application log (assetvault.log) structurally cannot
+# see -- anything happening at the OS level after a shell spawns.
+#
+# Install with:
+#   sudo cp assetvault.rules /etc/audit/rules.d/assetvault.rules
+#   sudo augenrules --load
+#   sudo systemctl restart auditd
+#
+# Verify with:
+#   sudo auditctl -l
+
+# Watch for changes to sudoers.d -- catches the misconfiguration being
+# added, removed, or modified
+-w /etc/sudoers.d/ -p wa -k sudoers_change
+
+# Watch the AssetVault reports directory for writes -- catches uploads
+# and any file activity inside the vault
+-w /opt/assetvault/reports -p wa -k assetvault_files
+
+# Watch for execution of the python3 binary -- catches the privilege
+# escalation step (sudo python3 ...)
+-w /usr/bin/python3 -p x -k python_exec
+
+# Watch for any execve of /bin/bash -- catches the reverse shell spawning
+# and any subsequent root shell spawned via the sudo misconfiguration
+-a always,exit -F arch=b64 -S execve -F path=/bin/bash -k bash_spawn
