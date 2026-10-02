@@ -1,0 +1,18 @@
+{
+  "model": "srcnn",
+  "run_name": "srcnn",
+  "data_dir": "data/images",
+  "scale": 4,
+  "hr_crop": 128,
+  "degradation_strength": "medium",
+  "val_frac": 0.1,
+  "test_frac": 0.1,
+  "split_seed": 42,
+  "batch_size": 16,
+  "epochs": 100,
+  "lr": 0.0002,
+  "seed": 42,
+  "output_dir": "outputs",
+  "log_every_steps": 20,
+  "snapshot_every_epochs": 5
+}
