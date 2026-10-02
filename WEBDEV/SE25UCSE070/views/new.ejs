@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Files</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+    <h2>Upload New Files</h2>
+
+    <form method="post" action="/upload" enctype="multipart/form-data" class="files">
+        <input type="file" name="file" id="file" multiple required>
+        <button type="submit">Upload</button>   
+    </form>
+</body>
+</html>

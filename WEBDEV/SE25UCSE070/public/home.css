@@ -1,0 +1,151 @@
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #2a3441;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #4a8cff;
+  --accent-hover: #6ba1ff;
+  --danger: #f85149;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+h2 {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.upload {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 32px;
+}
+
+.upload p {
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 8%;
+  min-width: 280px;
+}
+
+input[type="file"] {
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+button {
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+form button[type="submit"] {
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+form button[type="submit"]:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.uploaded-files {
+  margin-top: 50px;
+  color: var(--muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.existing {
+  display: flex;
+  max-width: 70%;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.indvfiles {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  max-width: 220px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.indvfiles p {
+  margin: 0;
+  word-break: break-word;
+  font-size: 14px;
+}
+
+.indvfiles p:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.indvfiles p:nth-child(2) {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.indvfiles a {
+  text-decoration: none;
+}
+
+.indvfiles button {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .existing {
+    max-width: 90%;
+  }
+}
