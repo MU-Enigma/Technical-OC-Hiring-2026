@@ -1,0 +1,10 @@
+.env
+volumes/db_data/*
+!volumes/db_data/.gitkeep
+volumes/apache_logs/*
+!volumes/apache_logs/.gitkeep
+volumes/app_logs/*
+!volumes/app_logs/.gitkeep
+__pycache__/
+*.pyc
+.DS_Store

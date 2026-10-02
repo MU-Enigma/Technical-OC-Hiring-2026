@@ -1,0 +1,434 @@
+/* The Worm Library - Modern Minimalist Design System */
+
+:root {
+    --bg-primary: #fcfbf7;
+    --bg-surface: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-subtle: #f1f5f9;
+    
+    --brand-primary: #2d5a27;
+    --brand-hover: #1e3f1a;
+    --brand-light: #f0fdf4;
+    
+    --accent-amber: #d97706;
+    --amber-bg: #fffbeb;
+    --accent-blue: #2563eb;
+    --blue-bg: #eff6ff;
+    --accent-red: #dc2626;
+    --red-bg: #fef2f2;
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header & Navigation */
+.site-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--brand-primary);
+}
+
+.brand-icon {
+    font-size: 1.5rem;
+}
+
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.15s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--brand-primary);
+}
+
+.user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--brand-light);
+    color: var(--brand-primary);
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(45, 90, 39, 0.15);
+}
+
+.user-badge .dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--brand-primary);
+    border-radius: 50%;
+}
+
+/* Layout & Containers */
+.main-content {
+    flex: 1;
+    padding: 2.5rem 1.5rem;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+}
+
+/* Cards & Surface Elements */
+.card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+/* Auth / Login Layout */
+.auth-container {
+    max-width: 420px;
+    margin: 3rem auto;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.15);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+}
+
+.btn-primary {
+    background-color: var(--brand-primary);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-hover);
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+.btn-danger {
+    background-color: var(--accent-red);
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #b91c1c;
+}
+
+.btn-primary-sm {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.85rem;
+    background-color: var(--brand-primary);
+    color: #ffffff;
+}
+
+.btn-outline-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+.btn-outline-sm:hover {
+    background-color: #f8fafc;
+    color: var(--text-primary);
+}
+
+.btn-sm {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+}
+
+/* Tables */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.925rem;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #f8fafc;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.data-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.data-table tbody tr:hover {
+    background-color: #fdfdfd;
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.badge-available {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.badge-borrowed {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+.badge-maintenance {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.badge-admin {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}
+
+.badge-librarian {
+    background-color: #f0fdf4;
+    color: #166534;
+}
+
+.badge-active {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.badge-disabled {
+    background-color: #f1f5f9;
+    color: #64748b;
+}
+
+/* Search bar */
+.search-box {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-box input {
+    flex: 1;
+}
+
+/* Alerts */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.15rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.alert-info {
+    background-color: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem;
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.server-tag {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}

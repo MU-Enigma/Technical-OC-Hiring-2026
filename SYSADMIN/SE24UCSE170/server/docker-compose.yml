@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: worm_library_db
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./volumes/db_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: worm_library_web
+    restart: always
+    command: /bin/sh -c "chown -R daemon:daemon /var/log/app && httpd-foreground"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      SECRET_KEY: ${SECRET_KEY}
+      INITIAL_ADMIN_USERNAME: ${INITIAL_ADMIN_USERNAME}
+      INITIAL_ADMIN_PASSWORD: ${INITIAL_ADMIN_PASSWORD}
+    ports:
+      - "${PORT:-8080}:80"
+    volumes:
+      - ./cgi-bin:/usr/local/apache2/cgi-bin
+      - ./htdocs:/usr/local/apache2/htdocs
+      - ./volumes/apache_logs:/usr/local/apache2/logs
+      - ./volumes/app_logs:/var/log/app
+    depends_on:
+      db:
+        condition: service_healthy
