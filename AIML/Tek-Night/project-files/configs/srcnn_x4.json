@@ -1,0 +1,56 @@
+{
+  "experiment_name": "srcnn_x4",
+
+  "seed": 42,
+
+  "device": "auto",
+  
+  "model": {
+    "name": "SRCNN",
+    "scale_factor": 4
+  },
+
+  "training": {
+    "epochs": 50,
+    "batch_size": 16,
+    "num_workers": 0,
+    "save_every": 5
+  },
+
+  "optimizer": {
+    "name": "Adam",
+    "learning_rate": 0.0001
+  },
+
+  "loss": {
+    "name": "L1"
+  },
+
+  "dataset": {
+    "hr_patch_size": 128,
+    "channels": 3
+  },
+
+  "degradation": {
+    "scale_factor": 4,
+
+    "blur": {
+      "enabled": true,
+      "probability": 0.3,
+      "sigma": 1.2
+    },
+
+    "jpeg": {
+      "enabled": true,
+      "probability": 0.5,
+      "quality_min": 60,
+      "quality_max": 95
+    },
+
+    "noise": {
+      "enabled": true,
+      "probability": 0.3,
+      "std": 5
+    }
+  }
+}

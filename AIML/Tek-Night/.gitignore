@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Virtual environments
+.venv/
+venv/
+
+#Outputs
+outputs/
+
+__pycache__/
+*.py[cod]
+
+# Outputs
+project-files/outputs/
+
+# Dataset 
+project-files/dataset/raw_hr
+project-files/dataset/test
+project-files/dataset/train
+project-files/dataset/val
+
+# Future model files
+checkpoints/
+*.pth
+*.pt
+
+# Logs
+logs/
+runs/
